@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Shilo">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="{% static 'img/icon-192x192.png' %}">
+    <title>SMP</title>
+
+    <link href="{% static 'img/icon-72x72.png' %}" rel="icon">
+    <link href="{% static 'img/icon-72x72.png' %}" rel="apple-touch-icon">
+
+    <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/font-awesome/css/font-awesome.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style-responsive.css' %}" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<br>
+<div class="container">
+  <h2>supply</h2>
+    
+  <h5 style="color: #000; font-size: large;"class="tableactive"><span style="float: right;" 
+    style="color: #000; font-size: medium; font-weight: 300;
+    padding: 5px; border-radius: 8px;">{{current_profitt}}</span></h5>
+    
+  <p>Expected profit: </p>
+  <form method="post">
+    {% csrf_token %}
+
+    
+  
+
+
+
+  <table class="table table-advance" style="background-color: white; height: 100px;">
+    <thead>
+        <tr>
+          <th><i class=""></i> Product</th>
+          <th class=""><i class=""></i> In store</th>
+          <th><i class=""></i> All</th>
+          <th><i class=""></i> Unitprice</th>
+          <th><i class=""></i> Bulkprice</th>
+          <th><i class=""></i> Profit</th>
+            <th></th>
+          </tr>
+            </thead>
+            <tbody>
+            {% for product in products reversed%}
+            <tr>
+                <td style="color: black">{{product.productName}}</a></td>
+                <td style="color: black; font-size: small;"><label id="availablep">{{product.availableProduct}}</label>
+                    <label id="addAvailable" style="border: #000; background: #fff; padding-left: 3px;">+</label> 
+                    <label id="removeAvailable" style="border: #000; background: #fff; padding-left: 13px;">-</label>
+                </td>
+                <td style="color: black; font-size: small;"><label id="totalp">{{product.totalProduct}}</label>
+                    <label id="addtot" style="border: #000; background: #fff; padding-left: 3px;">+</label> 
+                    <label id="removetot" style="border: #000; background: #fff; padding-left: 13px;">-</label>
+                </td>                
+                <td style="color: black" id="sellingp" >{{product.unitSellingPrice}} </td>
+                <td style="color: black" id="bulkp" >{{product.bulkPrice}}</td>
+                <td style="color: black" id="current_profit">{{product.current_profit}}</td>
+              </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+  <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'lib/bootstrap/js/bootstrap.min.js' %}"></script>
+  <script class="include" type="text/javascript" src="{% static 'lib/jquery.dcjqaccordion.2.7.js' %}"></script>
+  <script src="{% static 'lib/jquery.scrollTo.min.js' %}"></script>
+  <script src="{% static 'lib/jquery.nicescroll.js' %}" type="text/javascript"></script>
+  <script src="{% static 'lib/common-scripts.js' %}"></script>
+  <script src="{% static 'lib/update1.js' %}"></script>
+  
+
+
+
+
+</body>
+
+</html>

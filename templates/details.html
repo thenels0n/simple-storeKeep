@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Shilo">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="{% static 'img/icon-192x192.png' %}">
+    <title>SMP</title>
+
+    <link href="{% static 'img/icon-72x72.png' %}" rel="icon">
+    <link href="{% static 'img/icon-72x72.png' %}" rel="apple-touch-icon">
+
+    <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/font-awesome/css/font-awesome.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style-responsive.css' %}" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<br>
+<div class="container">
+  <h2>Detail Page</h2>
+  <h5 style="color: #4ECDC4;"class="tableactive"><span style="float: right;"><a href="/" style="color: #4ECDC4; font-weight: 300"> Main Page </a></span></h5>
+
+  <p></p>
+  <form method="post">
+    {% csrf_token %}
+
+    <div class="form-group">
+      <label for="uname">Product name:</label>
+      <input type="text" class="form-control" id=""{{form.productName}}
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+    <div class="form-group">
+      <label for="">Bulk price:</label>
+      <input type="text" class="form-control" id="bulkp" {{form.bulkPrice}}
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+    <div class="form-group">
+      <label for="uname">Unit selling price:</label>
+      <input type="text" class="form-control" id="sellingp" {{form.unitSellingPrice}}
+    </div>
+    <div class="form-group">
+      <label for="pwd">Total products:</label>
+      <input type="text" class="form-control" id="totalp"{{form.totalProduct}}
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+    <div class="form-group">
+      <label for="pwd">Available products:</label>
+      <input type="text" class="form-control" id="availablep" {{form.availableProduct}}
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+
+    <div class="form-group">
+      <input type="text" class="form-control" id="current_profit" hidden  {{form.current_profit}}
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+
+    
+    <button type="submit" id="click" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+<br><br>
+
+<button id="" >calc</button>
+
+
+<!---
+    <table class="table table-advance" style="background-color: white; height: 100px;">
+    <thead>
+        <tr>
+          <th><i class=""></i> Product</th>
+          <th class=""><i class=""></i> Stock</th>
+          <th><i class=""></i> All</th>
+          <th><i class=""></i> Price</th>
+          <th><i class=""></i> Costprice</th>
+          <th><i class=""></i> Profit</th>
+            <th></th>
+          </tr>
+            </thead>
+            <tbody>
+            {% for product in products reversed%}
+            <tr>
+                <td style="color: black">{{product.productName}}</td>
+                <td style="color: black">{{product.availableProduct}}</td>
+                <td style="color: black">{{product.totalProduct}}</td>
+                <td style="color: black">{{product.productSellingPrice}} </td>
+                <td style="color: black">{{product.productCostPrice}}</td>
+                <td style="color: black">{{product.totalProfit}}</td>
+              </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    -->
+
+  <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'lib/bootstrap/js/bootstrap.min.js' %}"></script>
+  <script class="include" type="text/javascript" src="{% static 'lib/jquery.dcjqaccordion.2.7.js' %}"></script>
+  <script src="{% static 'lib/jquery.scrollTo.min.js' %}"></script>
+  <script src="{% static 'lib/jquery.nicescroll.js' %}" type="text/javascript"></script>
+  <script src="{% static 'lib/common-scripts.js' %}"></script>
+  <script src="{% static 'js/update1.js' %}"></script>
+
+
+
+</body>
+
+</html>
