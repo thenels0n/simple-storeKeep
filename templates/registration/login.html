@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="Dashboard">
+  <meta name="keyword" content="Shilo">
+  <title>Shilo</title>
+
+  <!-- Favicons -->
+  <link href="{% static 'img/favicon.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <!--external css-->
+  <link href="{% static 'lib/font-awesome/css/font-awesome.css' %}" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  <link href="{% static 'css/style-responsive.css' %}" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <div id="login-page">
+    <div class="container">
+      <form class="form-login" method="POST" action="">
+                {% csrf_token %}
+        <h2 class="form-login-heading">sign in now</h2>
+        <div class="login-wrap">
+          <div>
+                {% for message in messages %}
+                <div class="alert {{message.tags}} alert-dismissable" role="alert">
+                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                         <span aria-hidden="true">&times;</span>
+                     </button>
+                        {{ message | safe }}
+            </div>
+            {% endfor %}
+                 {% if form.errors %}
+                    <p> Your username and password didn't match. Please try again</p>
+                {% endif %}
+
+                {% if next %}
+                    {% if user.is_authenticated %}
+                            <p>Your account does not have access to this page. To proceed,
+                            please login with an account that has access.</p>
+                    {% else %}
+                            <p>Please login to see this page.</p>
+                    {% endif %}
+                {% endif %}
+			</div>
+          <input type="text" id="username" name="username" class="form-control" placeholder="User ID" autofocus>
+          <br>
+          <input type="password" id="password" name="password" class="form-control" placeholder="Password">
+          <label class="checkbox">
+            <input type="checkbox" value="remember-me"> Remember me
+            <span class="pull-right">
+            </span>
+            </label>
+          <button class="btn btn-theme btn-block" href="login" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
+          <hr>
+        </div>
+        <!-- modal -->
+      </form>
+    </div>
+  </div>
+  <!-- js placed at the end of the document so the pages load faster -->
+  <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'lib/bootstrap/js/bootstrap.min.js' %}"></script>
+  <!--BACKSTRETCH-->
+  <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+  <script type="text/javascript" src="{% static 'lib/jquery.backstretch.min.js' %}"></script>
+  <script>
+    $.backstretch("img/login-bg.jpg", {
+      speed: 500
+    });
+  </script>
+</body>
+
+</html>

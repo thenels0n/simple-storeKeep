@@ -27,3 +27,9 @@ document.getElementById('click').addEventListener('click', function() {
 
 
 })
+
+
+document.getElementById('bulk').addEventListener('click', function() {
+    document.getElementById('bulkp').disabled = false;
+
+});

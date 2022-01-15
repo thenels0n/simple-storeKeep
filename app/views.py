@@ -1,15 +1,28 @@
-from multiprocessing.dummy import current_process
 from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
 from .models import Product
 from .forms import DocumentForm, UploadProduct
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login, authenticate
 from django.core.exceptions import ValidationError
 from django.db.models import Sum
 
 
 # Create your views here.3k. 56k
 
+def user_login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('main')
+        else:
+            messages.info(request, 'Username or password is incorrect')
+    return render(request, 'login.html')
 
+@login_required
 def index(request):
     products = Product.objects.all().order_by('-productName')
     if request.method == 'POST':
